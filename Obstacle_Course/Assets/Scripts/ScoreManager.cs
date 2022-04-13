@@ -14,4 +14,13 @@ public class ScoreManager : MonoBehaviour
             Debug.Log("You've bumped into a thing this many times: " + hits);
         }    
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Finish"))
+        {
+            Debug.Log("Congratulations! You made it through the course!!");
+            Debug.Log("Your final score is: " + hits);
+        }
+    }
 }
