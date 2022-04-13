@@ -6,18 +6,27 @@ public class Dropper : MonoBehaviour
 {
     [SerializeField] private float timeToWait = 5f;
 
-    // Start is called before the first frame update
-    void Start()
+    MeshRenderer meshRenderer;
+    Rigidbody rb;
+
+    void Awake()
     {
-        
+        meshRenderer = GetComponent<MeshRenderer>();
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        meshRenderer.enabled = false;
+        rb.useGravity = false;
+    }
+
     void Update()
     {
         if (Time.time > timeToWait)
         {
-            Debug.Log(timeToWait + " second(s) have elapsed");
+            meshRenderer.enabled = true;
+            rb.useGravity = true;
         }
     }
 }
